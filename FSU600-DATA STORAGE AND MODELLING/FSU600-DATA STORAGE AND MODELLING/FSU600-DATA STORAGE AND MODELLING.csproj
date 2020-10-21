@@ -5,4 +5,9 @@
     <RootNamespace>FSU600_DATA_STORAGE_AND_MODELLING</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
+    <PackageReference Include="MongoDB.Driver" Version="2.11.3" />
+  </ItemGroup>
+
 </Project>
