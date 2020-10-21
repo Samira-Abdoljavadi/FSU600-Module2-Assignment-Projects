@@ -16,16 +16,6 @@ namespace FSU600_DATA_STORAGE_AND_MODELLING
         public static void Main(string[] args)
         {
             CreateHostBuilder(args).Build().Run();
-
-            var dbClient = new MongoClient("mongodb://127.0.0.1:27017");
-            var dbList = dbClient.ListDatabases().ToList();
-
-            Console.WriteLine("The list of databases are:");
-
-            foreach (var item in dbList)
-            {
-                Console.WriteLine(item);
-            }
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
