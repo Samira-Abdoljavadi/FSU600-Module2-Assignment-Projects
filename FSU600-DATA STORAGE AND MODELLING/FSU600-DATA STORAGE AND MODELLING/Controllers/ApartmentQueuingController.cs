@@ -9,18 +9,13 @@ namespace FSU600_DATA_STORAGE_AND_MODELLING.Controllers
 {
     public class ApartmentQueuingController : Controller
     {
-        //public IActionResult Index()
-        //{
-        //    return View();
-        //}
+        public IActionResult Index()
+        {
+            return View();
+        }
 
         // 
         //GET: /ApartmentQueuing/
-
-        public string Index()
-        {
-            return "This is my ApartmentQueuing Controller...";
-        }
 
         // 
         // GET: /ApartmentQueuing/Welcome/ 

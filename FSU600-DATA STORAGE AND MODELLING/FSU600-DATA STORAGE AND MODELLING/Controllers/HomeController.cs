@@ -23,7 +23,7 @@ namespace FSU600_DATA_STORAGE_AND_MODELLING.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult About()
         {
             return View();
         }
