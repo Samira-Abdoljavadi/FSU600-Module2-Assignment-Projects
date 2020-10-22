@@ -10,6 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
 using FSU600_DATA_STORAGE_AND_MODELLING.Models;
+using FSU600_DATA_STORAGE_AND_MODELLING.Services;
 
 namespace FSU600_DATA_STORAGE_AND_MODELLING
 {
@@ -32,6 +33,8 @@ namespace FSU600_DATA_STORAGE_AND_MODELLING
 
             services.AddSingleton<IApartmentQueuingSettings>(sp =>
                 sp.GetRequiredService<IOptions<ApartmentQueuingSettings>>().Value);
+
+            services.AddSingleton<ApartmentsService>();
             /////////////////////////////////////////////////////////////////////////////////////////////
 
             services.AddControllersWithViews();
