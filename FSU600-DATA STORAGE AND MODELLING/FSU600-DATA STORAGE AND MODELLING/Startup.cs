@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Options;
+using FSU600_DATA_STORAGE_AND_MODELLING.Models;
 
 namespace FSU600_DATA_STORAGE_AND_MODELLING
 {
@@ -23,6 +25,15 @@ namespace FSU600_DATA_STORAGE_AND_MODELLING
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // requires using Microsoft.Extensions.Options
+            /////////////////////////////////////////////////////////////////////////////////////////////
+            services.Configure<ApartmentQueuingSettings>(
+                Configuration.GetSection(nameof(ApartmentQueuingSettings)));
+
+            services.AddSingleton<IApartmentQueuingSettings>(sp =>
+                sp.GetRequiredService<IOptions<ApartmentQueuingSettings>>().Value);
+            /////////////////////////////////////////////////////////////////////////////////////////////
+
             services.AddControllersWithViews();
         }
 
