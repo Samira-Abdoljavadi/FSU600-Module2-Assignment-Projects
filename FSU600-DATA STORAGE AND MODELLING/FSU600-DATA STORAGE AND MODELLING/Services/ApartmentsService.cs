@@ -39,5 +39,6 @@ namespace FSU600_DATA_STORAGE_AND_MODELLING.Services
 
         public void Remove(string id) =>
             _apartment.DeleteOne(apartment => apartment.Id == id);
+        //öl.,öl,
     }
 }
