@@ -4,41 +4,51 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using FSU600_DATA_STORAGE_AND_MODELLING.Models;
+using Microsoft.Extensions.Configuration;
 
 namespace FSU600_DATA_STORAGE_AND_MODELLING.Services
 {
     public class ApartmentsService
     {
-        private readonly IMongoCollection<Apartments> _apartment;
+        private readonly IMongoCollection<Apartments> apartments;
 
-        public ApartmentsService(IApartmentQueuingSettings settings)
+        public ApartmentsService(IConfiguration config)
         {
-            var client = new MongoClient(settings.ConnectionString);
-            var database = client.GetDatabase(settings.DatabaseName);
-
-            _apartment = database.GetCollection<Apartments>(settings.ApartmentsCollectionName);
+            MongoClient client = new MongoClient(config.GetConnectionString("Apartment-Queuing"));
+            IMongoDatabase database = client.GetDatabase("Apartment-Queuing");
+            apartments = database.GetCollection<Apartments>("Apartments");
         }
 
-        public List<Apartments> Get() =>
-            _apartment.Find(apartment => true).ToList();
+        public List<Apartments> Get()
+        {
+            return apartments.Find(apartment => true).ToList();
+        }
 
-        public Apartments Get(string id) =>
-            _apartment.Find<Apartments>(apartment => apartment.Id == id).FirstOrDefault();
+        public Apartments Get(string id)
+        {
+            return apartments.Find(apartment => apartment.Id == id).FirstOrDefault();
+        }
 
         public Apartments Create(Apartments apartment)
         {
-            _apartment.InsertOne(apartment);
+            apartments.InsertOne(apartment);
             return apartment;
         }
 
-        public void Update(string id, Apartments apartmentIn) =>
-            _apartment.ReplaceOne(apartment => apartment.Id == id, apartmentIn);
+        public void Update(string id, Apartments apartmentIn)
+        {
+            apartments.ReplaceOne(apartment => apartment.Id == id, apartmentIn);
+        }
 
-        public void Remove(Apartments apartmentIn) =>
-            _apartment.DeleteOne(apartment => apartment.Id == apartmentIn.Id);
+        public void Remove(Apartments apartmentIn)
+        {
+            apartments.DeleteOne(apartment => apartment.Id == apartmentIn.Id);
+        }
 
-        public void Remove(string id) =>
-            _apartment.DeleteOne(apartment => apartment.Id == id);
-     
+        public void Remove(string id)
+        {
+            apartments.DeleteOne(apartment => apartment.Id == id);
+        }
+
     }
 }
