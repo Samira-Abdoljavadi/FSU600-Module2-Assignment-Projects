@@ -4,13 +4,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using FSU600_DATA_STORAGE_AND_MODELLING.Models;
 using FSU600_DATA_STORAGE_AND_MODELLING.Services;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FSU600_DATA_STORAGE_AND_MODELLING.Controllers
 {
-    [Route("[controller]")]
-    [ApiController]
-    public class ApartmentsController : ControllerBase
+    public class ApartmentsController : Controller
     {
         private readonly ApartmentsService _apartmentsService;
 
@@ -19,59 +18,122 @@ namespace FSU600_DATA_STORAGE_AND_MODELLING.Controllers
             _apartmentsService = apartmentsService;
         }
 
-        [HttpGet]
-        public ActionResult<List<Apartments>> Get() =>
-            _apartmentsService.Get();
-
-        [HttpGet("{id:length(24)}", Name = "GetApartment")]
-        public ActionResult<Apartments> Get(string id)
+        // GET: ApartmentsController
+        public ActionResult Index()
         {
-            var apartment = _apartmentsService.Get(id);
+            return View(_apartmentsService.Get());
+        }
 
-            if (apartment == null)
+        // GET: ApartmentsController/Details/5
+        public ActionResult Details(string id)
+        {
+            if (id == null)
             {
                 return NotFound();
             }
 
-            return apartment;
+            var apartments = _apartmentsService.Get(id);
+            if (apartments == null)
+            {
+                return NotFound();
+            }
+            return View(apartments);
         }
 
+        // GET: ApartmentsController/Create
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        // POST: ApartmentsController/Create
         [HttpPost]
-        public ActionResult<Apartments> Create(Apartments apartment)
+        [ValidateAntiForgeryToken]
+        public IActionResult Create(Apartments apartments)
         {
-            _apartmentsService.Create(apartment);
-
-            return CreatedAtRoute("GetApartment", new { id = apartment.Id.ToString() }, apartment);
+            if (ModelState.IsValid)
+            {
+                _apartmentsService.Create(apartments);
+                return RedirectToAction(nameof(Index));
+            }
+            return View(apartments);
         }
 
-        [HttpPut("{id:length(24)}")]
-        public IActionResult Update(string id, Apartments apartmentIn)
+        // GET: ApartmentsController/Edit/5
+        public ActionResult Edit(string id)
         {
-            var apartment = _apartmentsService.Get(id);
-
-            if (apartment == null)
+            if (id == null)
             {
                 return NotFound();
             }
 
-            _apartmentsService.Update(id, apartmentIn);
-
-            return NoContent();
+            var apartments = _apartmentsService.Get(id);
+            if (apartments == null)
+            {
+                return NotFound();
+            }
+            return View(apartments);
         }
 
-        [HttpDelete("{id:length(24)}")]
-        public IActionResult Delete(string id)
+        // POST: ApartmentsController/Edit/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(string id, Apartments apartments)
         {
-            var apartment = _apartmentsService.Get(id);
+            if (id != apartments.Id)
+            {
+                return NotFound();
+            }
+            if (ModelState.IsValid)
+            {
+                _apartmentsService.Update(id, apartments);
+                return RedirectToAction(nameof(Index));
+            }
+            else
+            {
+                return View(apartments);
+            }
+        }
 
-            if (apartment == null)
+        // GET: ApartmentsController/Delete/5
+        public ActionResult Delete(string id)
+        {
+            if (id == null)
             {
                 return NotFound();
             }
 
-            _apartmentsService.Remove(apartment.Id);
-
-            return NoContent();
+            var apartments = _apartmentsService.Get(id);
+            if (apartments == null)
+            {
+                return NotFound();
+            }
+            return View(apartments);
         }
+
+        // POST: ApartmentsController/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(string id)
+        {
+            try
+            {
+                var apartments = _apartmentsService.Get(id);
+
+                if (apartments == null)
+                {
+                    return NotFound();
+                }
+
+                _apartmentsService.Remove(apartments.Id);
+
+                return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
     }
 }
