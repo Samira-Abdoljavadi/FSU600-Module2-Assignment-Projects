@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using FSU600_DATA_STORAGE_AND_MODELLING.Models;
 using FSU600_DATA_STORAGE_AND_MODELLING.Services;
+using FSU600_DATA_STORAGE_AND_MODELLING.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,6 +17,7 @@ namespace FSU600_DATA_STORAGE_AND_MODELLING.Controllers
         {
             _requestsService = requestsService;
         }
+
         // GET: RequestsController
         public ActionResult Index()
         {

@@ -135,5 +135,45 @@ namespace FSU600_DATA_STORAGE_AND_MODELLING.Controllers
             }
         }
 
+
+
+
+
+        //// GET: ApartmentsController/Request/5
+        //public ActionResult Request(string id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    var apartments = _apartmentsService.Get(id);
+        //    if (apartments == null)
+        //    {
+        //        return NotFound();
+        //    }
+        //    return View(apartments);
+        //}
+
+        //// POST: ApartmentsController/Request/5
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Request(string id, Apartments apartments)
+        //{
+        //    if (id != apartments.Id)
+        //    {
+        //        return NotFound();
+        //    }
+        //    if (ModelState.IsValid)
+        //    {
+        //        _apartmentsService.Update(id, apartments);
+        //        return RedirectToAction(nameof(Index));
+        //    }
+        //    else
+        //    {
+        //        return View(apartments);
+        //    }
+        //}
+
     }
 }

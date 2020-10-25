@@ -1,0 +1,29 @@
+﻿@model FSU600_DATA_STORAGE_AND_MODELLING.Models.Requests
+
+@{
+    ViewData["Title"] = "Request Details";
+}
+
+<h1>Request Details</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ApartmentId)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ApartmentId)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ApplicantId)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ApplicantId)
+        </dd>
+    </dl>
+</div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new {id = Model.Id }) |
+    <a asp-action="Index">Back to List</a>
+</div>

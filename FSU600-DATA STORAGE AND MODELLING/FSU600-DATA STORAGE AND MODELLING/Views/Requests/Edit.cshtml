@@ -1,0 +1,37 @@
+﻿@model FSU600_DATA_STORAGE_AND_MODELLING.Models.Requests
+
+@{
+    ViewData["Title"] = "Edit Request";
+}
+
+<h1>Edit Request</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="ApartmentId" class="control-label"></label> *
+                <input asp-for="ApartmentId" class="form-control" />
+                <span asp-validation-for="ApartmentId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ApplicantId" class="control-label"></label> *
+                <input asp-for="ApplicantId" class="form-control" />
+                <span asp-validation-for="ApplicantId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
