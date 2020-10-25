@@ -5,19 +5,15 @@
 }
 
 <h1>Edit Apartment</h1>
-<div class="row">
-    <div class="col-md-12">
-        <form asp-action="Edit">
-            <div class="text-right , card-img-overlay" style="padding-right:65px ; padding-top:65px">
-                <img src="@Url.Content(Model.ImageUrl)" width="500" 
-                style="padding:2px ; background-color:cornflowerblue " />
-            </div>
-        </form>
-    </div>
-</div>
 
 <hr />
 <div class="row">
+    <div class="col-md-12">
+        <div class="text-right , card-img-overlay" style="padding-right:65px ; padding-top:35px">
+            <img src="@Url.Content(Model.ImageUrl)" width="500"
+                 style="padding:2px ; background-color:cornflowerblue " />
+        </div>
+    </div>
     <div class="col-md-4">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -31,7 +27,7 @@
                 <span asp-validation-for="Situation" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Street" class="control-label"></label>
+                <label asp-for="Street" class="control-label"></label> *
                 <input asp-for="Street" class="form-control" />
                 <span asp-validation-for="Street" class="text-danger"></span>
             </div>
@@ -41,32 +37,32 @@
                 <span asp-validation-for="Area" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="City" class="control-label"></label>
+                <label asp-for="City" class="control-label"></label> *
                 <input asp-for="City" class="form-control" />
                 <span asp-validation-for="City" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Rooms" class="control-label"></label>
+                <label asp-for="Rooms" class="control-label"></label> *
                 <input asp-for="Rooms" class="form-control" />
                 <span asp-validation-for="Rooms" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="SquareMeters" class="control-label"></label>
+                <label asp-for="SquareMeters" class="control-label"></label> (m²) *
                 <input asp-for="SquareMeters" class="form-control" />
                 <span asp-validation-for="SquareMeters" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Rent" class="control-label"></label>
+                <label asp-for="Rent" class="control-label"></label> (SEK/month) *
                 <input asp-for="Rent" class="form-control" />
                 <span asp-validation-for="Rent" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="MoveInDate" class="control-label"></label>
+                <label asp-for="MoveInDate" class="control-label"></label> *
                 <input asp-for="MoveInDate" new { type="date" , class="form-control" } />
                 <span asp-validation-for="MoveInDate" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Floor" class="control-label"></label>
+                <label asp-for="Floor" class="control-label"></label> *
                 <input asp-for="Floor" class="form-control" />
                 <span asp-validation-for="Floor" class="text-danger"></span>
             </div>

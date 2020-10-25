@@ -27,6 +27,7 @@ namespace FSU600_DATA_STORAGE_AND_MODELLING
         {
             services.AddScoped<ApartmentsService>();
             services.AddScoped<ApplicantsService>();
+            services.AddScoped<RequestsService>();
             services.AddControllersWithViews();
         }
 

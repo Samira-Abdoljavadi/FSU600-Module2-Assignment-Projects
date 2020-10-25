@@ -1,0 +1,120 @@
+﻿@model FSU600_DATA_STORAGE_AND_MODELLING.Models.Apartments
+
+@{
+    ViewData["Title"] = "Delete Apartment";
+}
+
+<h1>Delete Apartment</h1>
+
+<div class="text-left">
+    <h3 style="background-color:red " >
+        Are you sure you want to delete this Apartment?
+    </h3>
+</div>
+<div>
+    <hr />
+    <dl class="row">
+        <dd class="col-md-12">
+            <div class="text-right , card-img-overlay" style="padding-right:65px ; padding-top:35px ">
+                <img src="@Url.Content(Model.ImageUrl)" width="500"
+                     style="padding:2px ; background-color:cornflowerblue " />
+            </div>
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Situation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Situation)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Street)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Street)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Area)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Area)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.City)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.City)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Rooms)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Rooms)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SquareMeters)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SquareMeters) m²
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Rent)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Rent) SEK/month
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.MoveInDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.MoveInDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Floor)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Floor) of 
+            @Html.DisplayFor(model => model.WholeFloor)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PublishDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PublishDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Pets)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Pets)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Smoke)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Smoke)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.LandlordComments)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.LandlordComments)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Properties)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Properties)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.RentInclude)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.RentInclude)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

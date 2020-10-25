@@ -2,29 +2,28 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using FSU600_DATA_STORAGE_AND_MODELLING.Services;
 using FSU600_DATA_STORAGE_AND_MODELLING.Models;
+using FSU600_DATA_STORAGE_AND_MODELLING.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FSU600_DATA_STORAGE_AND_MODELLING.Controllers
 {
-    public class ApplicantsController : Controller
+    public class RequestsController : Controller
     {
-        private readonly ApplicantsService _applicantsService;
+        private readonly RequestsService _requestsService;
 
-        public ApplicantsController(ApplicantsService applicantsService)
+        public RequestsController(RequestsService requestsService)
         {
-            _applicantsService = applicantsService;
+            _requestsService = requestsService;
         }
-
-        // GET: ApplicantsController
+        // GET: RequestsController
         public ActionResult Index()
         {
-            return View(_applicantsService.Get());
+            return View(_requestsService.Get());
         }
 
-        // GET: ApplicantsController/Details/5
+        // GET: RequestsController/Details/5
         public ActionResult Details(string id)
         {
             if (id == null)
@@ -32,34 +31,34 @@ namespace FSU600_DATA_STORAGE_AND_MODELLING.Controllers
                 return NotFound();
             }
 
-            var applicants = _applicantsService.Get(id);
-            if (applicants == null)
+            var requests = _requestsService.Get(id);
+            if (requests == null)
             {
                 return NotFound();
             }
-            return View(applicants);
+            return View(requests);
         }
 
-        // GET: ApplicantsController/Create
+        // GET: RequestsController/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: ApplicantsController/Create
+        // POST: RequestsController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(Applicants applicants)
+        public IActionResult Create(Requests requests)
         {
             if (ModelState.IsValid)
             {
-                _applicantsService.Create(applicants);
+                _requestsService.Create(requests);
                 return RedirectToAction(nameof(Index));
             }
-            return View(applicants);
+            return View(requests);
         }
 
-        // GET: ApplicantsController/Edit/5
+        // GET: RequestsController/Edit/5
         public ActionResult Edit(string id)
         {
             if (id == null)
@@ -67,35 +66,35 @@ namespace FSU600_DATA_STORAGE_AND_MODELLING.Controllers
                 return NotFound();
             }
 
-            var applicants = _applicantsService.Get(id);
-            if (applicants == null)
+            var requests = _requestsService.Get(id);
+            if (requests == null)
             {
                 return NotFound();
             }
-            return View(applicants);
+            return View(requests);
         }
 
-        // POST: ApplicantsController/Edit/5
+        // POST: RequestsController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(string id, Applicants applicants)
+        public ActionResult Edit(string id, Requests requests)
         {
-            if (id != applicants.Id)
+            if (id != requests.Id)
             {
                 return NotFound();
             }
             if (ModelState.IsValid)
             {
-                _applicantsService.Update(id, applicants);
+                _requestsService.Update(id, requests);
                 return RedirectToAction(nameof(Index));
             }
             else
             {
-                return View(applicants);
+                return View(requests);
             }
         }
 
-        // GET: ApplicantsController/Delete/5
+        // GET: RequestsController/Delete/5
         public ActionResult Delete(string id)
         {
             if (id == null)
@@ -103,29 +102,29 @@ namespace FSU600_DATA_STORAGE_AND_MODELLING.Controllers
                 return NotFound();
             }
 
-            var applicants = _applicantsService.Get(id);
-            if (applicants == null)
+            var requests = _requestsService.Get(id);
+            if (requests == null)
             {
                 return NotFound();
             }
-            return View(applicants);
+            return View(requests);
         }
 
-        // POST: ApplicantsController/Delete/5
+        // POST: RequestsController/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
             try
             {
-                var applicants = _applicantsService.Get(id);
+                var requests = _requestsService.Get(id);
 
-                if (applicants == null)
+                if (requests == null)
                 {
                     return NotFound();
                 }
 
-                _applicantsService.Remove(applicants.Id);
+                _requestsService.Remove(requests.Id);
 
                 return RedirectToAction(nameof(Index));
             }
