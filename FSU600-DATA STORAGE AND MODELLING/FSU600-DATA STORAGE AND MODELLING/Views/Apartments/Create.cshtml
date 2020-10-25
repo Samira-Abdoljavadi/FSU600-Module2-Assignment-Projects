@@ -1,26 +1,29 @@
 ﻿@model FSU600_DATA_STORAGE_AND_MODELLING.Models.Apartments
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Add New Apartment";
 }
 
-<h1>Add New Apartments</h1>
+<h1>Add New Apartment</h1>
 
-@*<h4>Apartments</h4>*@
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            @*<div class="form-group">
-                    <label asp-for="Id" class="control-label"></label>
-                    <input asp-for="Id" class="form-control" />
-                    <span asp-validation-for="Id" class="text-danger"></span>
-                </div>*@
+             <div class="form-group">
+                <label asp-for="Situation" class="control-label"></label>
+                <select asp-for="Situation" class="form-control">
+                    <option value=""></option>
+                    <option value="First-Hand">First-Hand</option>
+                    <option value="Second-Hand">Second-Hand</option>
+                </select>
+                <span asp-validation-for="Situation" class="text-danger"></span>
+             </div>
             <div class="form-group">
-                <label asp-for="City" class="control-label"></label>
-                <input asp-for="City" class="form-control" />
-                <span asp-validation-for="City" class="text-danger"></span>
+                <label asp-for="Street" class="control-label"></label>
+                <input asp-for="Street" class="form-control" />
+                <span asp-validation-for="Street" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Area" class="control-label"></label>
@@ -28,9 +31,29 @@
                 <span asp-validation-for="Area" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Adress" class="control-label"></label>
-                <input asp-for="Adress" class="form-control" />
-                <span asp-validation-for="Adress" class="text-danger"></span>
+                <label asp-for="City" class="control-label"></label>
+                <input asp-for="City" class="form-control" />
+                <span asp-validation-for="City" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Rooms" class="control-label"></label>
+                <input asp-for="Rooms" class="form-control" />
+                <span asp-validation-for="Rooms" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SquareMeters" class="control-label"></label>
+                <input asp-for="SquareMeters" class="form-control" />
+                <span asp-validation-for="SquareMeters" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Rent" class="control-label"></label>
+                <input asp-for="Rent" class="form-control" />
+                <span asp-validation-for="Rent" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MoveInDate" class="control-label"></label>
+                <input asp-for="MoveInDate" new { type="date" , class="form-control" } />
+                <span asp-validation-for="MoveInDate" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Floor" class="control-label"></label>
@@ -43,9 +66,42 @@
                 <span asp-validation-for="WholeFloor" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Rent" class="control-label"></label>
-                <input asp-for="Rent" class="form-control" />
-                <span asp-validation-for="Rent" class="text-danger"></span>
+                <label asp-for="Pets" class="control-label"></label>
+                <select asp-for="Pets" class="form-control" >
+                    <option value=""></option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+                <span asp-validation-for="Pets" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Smoke" class="control-label"></label>
+                <select asp-for="Smoke" class="form-control">
+                    <option value=""></option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>                
+                <span asp-validation-for="Smoke" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RentInclude" class="control-label"></label>
+                <input asp-for="RentInclude" class="form-control" />
+                <span asp-validation-for="RentInclude" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LandlordComments" class="control-label"></label>
+                <input asp-for="LandlordComments" class="form-control" />
+                <span asp-validation-for="LandlordComments" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Properties" class="control-label"></label>
+                <input asp-for="Properties" class="form-control" />
+                <span asp-validation-for="Properties" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ImageUrl" class="control-label"></label>
+                <input asp-for="ImageUrl" class="form-control" />
+                <span asp-validation-for="ImageUrl" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />

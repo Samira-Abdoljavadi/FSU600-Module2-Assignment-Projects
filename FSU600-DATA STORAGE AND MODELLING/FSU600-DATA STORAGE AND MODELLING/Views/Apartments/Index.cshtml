@@ -7,31 +7,37 @@
 <h1>Apartments List</h1>
 
 <p>
-    <a asp-action="Create">Add New Apartments</a>
+    <a asp-action="Create">Add New Apartment</a>
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
-               @* @Html.DisplayNameFor(model => model.Id)*@
+                @Html.DisplayNameFor(model => model.ImageUrl)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.City)
+                City
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Area)
+                Zone
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Adress)
+                Street
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Floor)
+                Rooms
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.WholeFloor)
+                Area<br />(m²)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Rent)
+                Floor
+            </th>
+            <th>
+                Rent<br />(SEK/month)
+            </th>
+            <th>
+                Publish Date
             </th>
             <th></th>
         </tr>
@@ -39,8 +45,11 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
-            <td>
-              @*  @Html.DisplayFor(modelItem => item.Id)*@
+            <td style="padding:10px;">
+                @if (item.ImageUrl != null)
+                {
+                    <img src="@Url.Content(item.ImageUrl)" alt="Image" @*width="10" height="10"*@ />
+                }
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.City)
@@ -49,21 +58,27 @@
                 @Html.DisplayFor(modelItem => item.Area)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Adress)
+                @Html.DisplayFor(modelItem => item.Street)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Floor)
+                @Html.DisplayFor(modelItem => item.Rooms)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.WholeFloor)
+                @Html.DisplayFor(modelItem => item.SquareMeters)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Floor) of @Html.DisplayFor(modelItem => item.WholeFloor)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Rent)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-                @Html.ActionLink("Details", "Details", new {id=item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new {id=item.Id })
+                @Html.DisplayFor(modelItem => item.PublishDate)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
             </td>
         </tr>
 }

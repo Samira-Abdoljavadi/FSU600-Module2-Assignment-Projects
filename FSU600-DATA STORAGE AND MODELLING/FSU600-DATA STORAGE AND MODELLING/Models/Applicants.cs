@@ -15,13 +15,13 @@ namespace FSU600_DATA_STORAGE_AND_MODELLING.Models
         public string Id { get; set; }
 
         [BsonElement("FirstName")]
-        [Required]
         [Display(Name = "FirstName*")]
+        [Required]
         public string FirstName { get; set; }
 
         [BsonElement("LastName")]
-        [Required]
         [Display(Name = "LastName*")]
+        [Required]
         public string LastName { get; set; }
 
         [BsonElement("Socialsecuritynumber")]
@@ -29,19 +29,19 @@ namespace FSU600_DATA_STORAGE_AND_MODELLING.Models
         public string Socialsecuritynumber { get; set; }
 
         [BsonElement("BirthDate")]
+        [Display(Name = "Birth Date*")]
         [Required]
-        [Display(Name = "Birth of Date*")]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}")] //To remove time from display
         public DateTime BirthDate { get; set; }
 
         [BsonElement("PhoneNumber")]
+        [Display(Name = "Phone Number*")]
         [Required]
-        [Display(Name = "Phone Number")]
         public string PhoneNumber { get; set; }
 
         [BsonElement("EMail")]
+        [Display(Name = "Email*")]
         [Required]
-        [Display(Name = "EMail*")]
         public string EMail { get; set; }
 
         [BsonElement("Pets")]
@@ -54,6 +54,7 @@ namespace FSU600_DATA_STORAGE_AND_MODELLING.Models
         public string Street { get; set; }
 
         [BsonElement("PostalCode")]
+        [Display(Name = "Postal Code")]
         public int PostalCode { get; set; }
 
         [BsonElement("City")]
@@ -70,8 +71,7 @@ namespace FSU600_DATA_STORAGE_AND_MODELLING.Models
         public string MainEmployment { get; set; }
 
         [BsonElement("MainIncome")]
-        [Display(Name = "Main Income(SEK)")]
-        [DisplayFormat(DataFormatString = "{0:#,0}")]
+        [Display(Name = "Main Income(SEK/month)")]
         public decimal MainIncome { get; set; }
 
         [BsonElement("MainEmployer")]
